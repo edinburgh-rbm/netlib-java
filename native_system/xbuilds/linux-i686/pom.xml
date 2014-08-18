@@ -72,6 +72,9 @@
                     <execution>
                         <id>arpack</id>
                     </execution>
+                    <execution>
+                        <id>odepack</id>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

@@ -1,0 +1,2 @@
+- split opk[sd]main.f and opk[sd]a[12] into their constituent parts
+- exorcise vestiges of linpack (see http://hg.savannah.gnu.org/hgweb/octave/rev/d53c33d93440)

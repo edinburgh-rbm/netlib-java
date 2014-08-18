@@ -85,6 +85,20 @@
                             <natives>${natives}</natives>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>odepack</id>
+                        <goals>
+                            <goal>native-java</goal>
+                        </goals>
+                        <configuration>
+                            <outputName>com/github/fommil/netlib/NativeRefODEPACK.java</outputName>
+                            <scan>org.netlib.arpack</scan>
+                            <implementing>com.github.fommil.netlib.ODEPACK</implementing>
+                            <extending>com.github.fommil.netlib.F2jODEPACK</extending>
+                            <unsupported>${prefer.f2j}</unsupported>
+                            <natives>${natives}</natives>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

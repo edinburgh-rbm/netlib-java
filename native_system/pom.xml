@@ -23,9 +23,11 @@
 
     <modules>
         <module>java</module>
+<!--
         <module>osx-x86_64</module>
         <module>win-i686</module>
         <module>win-x86_64</module>
+-->
         <!-- cross compiles are built separately on a Linux box... -->
     </modules>
 
@@ -126,6 +128,26 @@
                                 </includes>
                             </configuration>
                         </execution>
+                        <execution>
+                            <id>odepack</id>
+                            <goals>
+                                <goal>native-jni</goal>
+                            </goals>
+                            <configuration>
+                                <implementing>com.github.fommil.netlib.NativeSystemODEPACK</implementing>
+                                <outputDir>${project.build.directory}/netlib-native</outputDir>
+                                <outputName>com_github_fommil_netlib_NativeSystemODEPACK.c</outputName>
+                                <scan>org.netlib.odepack</scan>
+                                <suffix>_</suffix>
+                                <exclude>${prefer.f2j}</exclude>
+                                <extractChar>true</extractChar>
+                                <exclude>${prefer.f2j}</exclude>
+                                <fortran_hack>true</fortran_hack>
+                                <includes>
+                                    <param>odepack.h</param>
+                                </includes>
+                            </configuration>
+                        </execution>
                     </executions>
                 </plugin>
                 <plugin>
@@ -139,6 +161,7 @@
                             <javahClassName>com.github.fommil.netlib.NativeSystemBLAS</javahClassName>
                             <javahClassName>com.github.fommil.netlib.NativeSystemLAPACK</javahClassName>
                             <javahClassName>com.github.fommil.netlib.NativeSystemARPACK</javahClassName>
+                            <javahClassName>com.github.fommil.netlib.NativeSystemODEPACK</javahClassName>
                         </javahClassNames>
                         <compilerStartOptions>
                             <compilerStartOption>-O3</compilerStartOption>
@@ -222,6 +245,12 @@
                             </source>
                             <source>
                                 <directory>${netlib.src}/ARPACK</directory>
+                                <includes>
+                                    <include>*.f</include>
+                                </includes>
+                            </source>
+                            <source>
+                                <directory>${netlib.src}/ODEPACK</directory>
                                 <includes>
                                     <include>*.f</include>
                                 </includes>
